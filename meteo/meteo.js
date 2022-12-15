@@ -1,56 +1,69 @@
-const map2 = L.map('map2').setView([47.00, 2.00], 6);
+const map2 = L.map("map2").setView([47.0, 2.0], 6);
 
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  maxZoom: 19,
+  attribution:
+    '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 }).addTo(map2);
 
-const token = '9f2b08bc2bd0d42ea411f79dea572dd358a6dedbf277edbd8d00f34c2e621176';
+const token =
+  "9f2b08bc2bd0d42ea411f79dea572dd358a6dedbf277edbd8d00f34c2e621176";
 
-const cityInsee = ["75056","13055","69123","31555","06088","44109","34172","67482","33063","59350"];
+const cityInsee = [
+  "75056",
+  "13055",
+  "69123",
+  "31555",
+  "06088",
+  "44109",
+  "34172",
+  "67482",
+  "33063",
+  "59350",
+];
 
 for (let city of cityInsee) {
-    let url = `https://api.meteo-concept.com/api/forecast/daily/0?token=${token}&insee=${city}`;
-    fetch(url)
-    .then (response => response.json())
-    .then (json => afficheMeteo (json))
+  let url = `https://api.meteo-concept.com/api/forecast/daily/0?token=${token}&insee=${city}`;
+  fetch(url)
+    .then((response) => response.json())
+    .then((json) => afficheMeteo(json));
 }
 
-
-function afficheMeteo (json){
-    let circle = L.circle([json.city.latitude, json.city.longitude], {
-        color: 'white',
-        fillColor: 'white',
-        fillOpacity: 0.5,
-        radius: 60000,
-    }).addTo(map2);
-    circle.bindPopup(`Ville de ${json.city.name}.<br>
+function afficheMeteo(json) {
+  let circle = L.circle([json.city.latitude, json.city.longitude], {
+    color: "black",
+    fillColor: "black",
+    fillOpacity: 1,
+    radius: 6500,
+  }).addTo(map2);
+  circle.bindPopup(`Ville de ${json.city.name}.<br>
     ${afficheIcone(json.forecast.weather)}
     Le temps prévu ajourd'hui est : ${WeatherTab[json.forecast.weather]}
-    `)}
+    `);
+}
 
-function afficheIcone(n){
-if (n === 0) {
-    return `<i class="wi wi-day-sunny"></i><br>`
-}
-if (n < 8) {
-    return `<i class="wi wi-day-cloudy"></i><br>`
-}
-if (n < 17) {
-    return `<i class="wi wi-rain"></i><br>`
-}
-if (n < 23) {
-    return `<i class="wi wi-snowflake-cold"></i><br>`
-}
-if (n < 79) {
-    return `<i class="wi wi-rain"></i><br>`
-}
-if (n < 142) {
-    return `<i class="wi wi-lightning"></i><br>`
-}
-if (n < 236) {
-    return `<i class="wi wi-snowflake-cold"></i><br>`
-}
+function afficheIcone(n) {
+  if (n === 0) {
+    return `<i class="wi wi-day-sunny"></i><br>`;
+  }
+  if (n < 8) {
+    return `<i class="wi wi-day-cloudy"></i><br>`;
+  }
+  if (n < 17) {
+    return `<i class="wi wi-rain"></i><br>`;
+  }
+  if (n < 23) {
+    return `<i class="wi wi-snowflake-cold"></i><br>`;
+  }
+  if (n < 79) {
+    return `<i class="wi wi-rain"></i><br>`;
+  }
+  if (n < 142) {
+    return `<i class="wi wi-lightning"></i><br>`;
+  }
+  if (n < 236) {
+    return `<i class="wi wi-snowflake-cold"></i><br>`;
+  }
 }
 
 const WeatherTab = [];
@@ -127,9 +140,11 @@ WeatherTab[132] = "Orages fort et locaux de pluie et neige mêlées ou grésil";
 WeatherTab[133] = "Orages faibles de pluie et neige mêlées ou grésil";
 WeatherTab[134] = "Orages de pluie et neige mêlées ou grésil";
 WeatherTab[135] = "Orages forts de pluie et neige mêlées ou grésil";
-WeatherTab[136] = "Orages faibles et fréquents de pluie et neige mêlées ou grésil";
+WeatherTab[136] =
+  "Orages faibles et fréquents de pluie et neige mêlées ou grésil";
 WeatherTab[137] = "Orages fréquents de pluie et neige mêlées ou grésil";
-WeatherTab[138] = "Orages forts et fréquents de pluie et neige mêlées ou grésil";
+WeatherTab[138] =
+  "Orages forts et fréquents de pluie et neige mêlées ou grésil";
 WeatherTab[140] = "Pluies orageuses";
 WeatherTab[141] = "Pluie et neige mêlées à caractère orageux";
 WeatherTab[142] = "Neige à caractère orageux";
@@ -143,5 +158,3 @@ WeatherTab[230] = "Pluie et neige mêlées";
 WeatherTab[231] = "Pluie et neige mêlées";
 WeatherTab[232] = "Pluie et neige mêlées";
 WeatherTab[235] = "Averses de grêle";
-
-

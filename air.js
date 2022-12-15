@@ -32,8 +32,8 @@ function AfficheAir(json) {
   let circle = L.circle(json.data.city.geo, {
     color: airPollution(json.data.iaqi.pm25.v),
     fillColor: airPollution(json.data.iaqi.pm25.v),
-    fillOpacity: 0.5,
-    radius: 60000,
+    fillOpacity: 1,
+    radius: 6500,
   }).addTo(map);
   circle.bindPopup(`Ville de ${json.data.city.name}.<br>
     PM2.5 (particules fines à 2,5 micro-mètres) = ${
