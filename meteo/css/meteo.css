@@ -1,0 +1,13 @@
+@import url("weather-icons.css");
+@import url("font/weathericons-regular-webfont.eot");
+@import url("font/weathericons-regular-webfont.svg");
+@import url("font/weathericons-regular-webfont.ttf");
+@import url("font/weathericons-regular-webfont.woff");
+@import url("font/weathericons-regular-webfont.woff2");
+ 
+
+#map2 { 
+    height: 600px;
+    width: 50%; 
+}
+

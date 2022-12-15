@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+    crossorigin=""/>
+    <link rel="stylesheet" href="css/meteo_air.css">
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+    crossorigin=""></script>
+    <script src="meteo_air.js" defer></script>
+
+    <title>Météo et Air</title>
+
+</head>
+
+<body>
+
+    <h1>Météo et Qualité de l'air des Métropôles</h1>
+
+    <nav>
+        <ul>
+            <li><a href="../index.html">Qualité de l'air</a></li>
+            <li><a href="../meteo/meteo.html">Météo des Métropôles</a></li>
+            <li><a href="../meteo_air/meteo_air.html">Météo + Qualité de l'air des Métropôles</a></li>
+        </ul>
+    </nav>
+
+    <div id="map3"></div>
+
+    <form method="post">
+
+        <div>
+            <label for="name">Vous voulez savoir la météo de votre ville ? <br> Alors écrivez son nom juste ici 👉</label>
+            <input type="text" id="cityName" placeholder="ex : Grenoble" name="cityName">
+            <input type="submit" value="Rechercher" id="cityBtn">
+        </div>
+
+    </form>
+
+</body>
+
+</html>
